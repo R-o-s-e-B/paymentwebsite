@@ -1,0 +1,19 @@
+.form-popup{
+
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 10px;
+  background:#402C54;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 60px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+input{
+border-radius:5px;
+height:40px;
+width:250px;
+}

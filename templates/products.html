@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>item</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/styles.css">
+
+
+</head>
+<body>
+<header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-flower2" viewBox="0 0 16 16" color="#C4CF9A">
+  <path d="M8 16a4 4 0 0 0 4-4 4 4 0 0 0 0-8 4 4 0 0 0-8 0 4 4 0 1 0 0 8 4 4 0 0 0 4 4zm3-12c0 .073-.01.155-.03.247-.544.241-1.091.638-1.598 1.084A2.987 2.987 0 0 0 8 5c-.494 0-.96.12-1.372.331-.507-.446-1.054-.843-1.597-1.084A1.117 1.117 0 0 1 5 4a3 3 0 0 1 6 0zm-.812 6.052A2.99 2.99 0 0 0 11 8a2.99 2.99 0 0 0-.812-2.052c.215-.18.432-.346.647-.487C11.34 5.131 11.732 5 12 5a3 3 0 1 1 0 6c-.268 0-.66-.13-1.165-.461a6.833 6.833 0 0 1-.647-.487zm-3.56.617a3.001 3.001 0 0 0 2.744 0c.507.446 1.054.842 1.598 1.084.02.091.03.174.03.247a3 3 0 1 1-6 0c0-.073.01-.155.03-.247.544-.242 1.091-.638 1.598-1.084zm-.816-4.721A2.99 2.99 0 0 0 5 8c0 .794.308 1.516.812 2.052a6.83 6.83 0 0 1-.647.487C4.66 10.869 4.268 11 4 11a3 3 0 0 1 0-6c.268 0 .66.13 1.165.461.215.141.432.306.647.487zM8 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+</svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" style="color:#C4CF9A" class="nav-link px-2 text">Avocado</a></li>
+          <li><a href="{{url_for('home')}}" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div class="text-end">
+          <a href="{{url_for('login')}}"> <button type="button" class="btn btn-outline-light me-2">Login</button></a>
+          <a href="{{url_for('register')}}"><button type="button"  class="btn btn-warning">Sign-up</button></a>
+            <a href="#"> <button type="button" class="btn btn-outline-light me-2">My orders</button></a>
+
+           <a href="{{url_for('cart')}}" type="button" style="padding-bottom:0px;" class="btn btn-outline-light me-2"><p style="margin:0px; margin-bottom:5px;">Cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+</svg> +{{count}}</p></a>
+            <a href="#"type="button" class=" me-2">{{current_user.name}}</a>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+<div style="width:100%; background:#30564D; color:white;">
+    <marquee>20% off with code: NBUYNOW</marquee>
+</div>
+
+
+
+
+<div style="margin-left:80px;margin-top:80px;" align="center" class="row featurette">
+      <div align="left" class="col-md-7 order-md-2">
+          <h2>{{item.Name}}</h2>
+          <p>${{item.Price}}</p>
+          <p>
+              {{item.Rating}}
+              {% for i in range(item.Rating) %}
+              ⭐
+              {% endfor %}
+          </p>
+
+          <label for="quantity">Quantity :</label>
+          <input type="number" id="quantity" name="quantity" min="1" max="10">
+          <br>
+          <br>
+          <a href="{{url_for('add_to_cart', id=item.id)}}"><input type="submit" id="add" value="Add to cart"></a>
+
+            <a href="{{url_for('add_to_cart', id=item.id)}}"><button type="submit" style="margin-left:20px;">Buy</button></a>
+
+          <br><br>
+          <p style="width:60%;">{{ item.desc }}</p>
+
+
+
+
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img src="{{item.img_url}}" class="img-fluid mx-auto" width="500" height="500" role="img" aria-label="Placeholder: 500x500" >
+      </div>
+    </div>
+</body>
+</html>
