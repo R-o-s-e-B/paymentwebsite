@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 
-from config import *
 
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -22,7 +21,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
 app.config["SQLALCHEMY_BINDS"] = {'items': "sqlite:///items.db"}
 app.config["TRACK_MODIFICATIONS"] = False
 
-
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 stripe.api_key = STRIPE_SECRET_KEY
 
 db = SQLAlchemy(app)
