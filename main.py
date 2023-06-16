@@ -12,6 +12,7 @@ from sqlalchemy import Column, Integer, ForeignKey
 import stripe
 import os
 
+count = 0
 Success = None
 Enter = False
 app = Flask(__name__)
@@ -189,6 +190,7 @@ def create_checkout_session():
         Success = True
         for i in item_to_del:
             if i.item_id == current_user.id:
+                current_user.cart_item_count = 0
                 db.session.delete(i)
                 db.session.commit()
     except Exception as e:
