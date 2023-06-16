@@ -21,3 +21,4 @@ Werkzeug==2.3.6
 WTForms==3.0.1
 requests==2.31.0
 setuptools==67.8.0
+stripe==5.4.0
