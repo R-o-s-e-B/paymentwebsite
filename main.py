@@ -4,11 +4,11 @@ from config import *
 
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+
 from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
 from sqlalchemy import Column, Integer, ForeignKey
-import requests
+
 import stripe
 import os
 
