@@ -132,7 +132,7 @@ def register():
 def product():
     id = request.args.get('id')
     item = db.session.query(Things).get(id)
-    return render_template('products.html', item=item, count=current_user.cart_item_count)
+    return render_template('products.html', item=item)
 
 
 @app.route('/add_to_cart', methods=['GET', 'POST'])

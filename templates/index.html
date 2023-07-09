@@ -73,7 +73,7 @@
     <h2 style="margin-top:50px;margin-left:40px;">Popular items</h2>
     <div style="margin-top:50px;margin-bottom:50px;" class="row">
     {% for i in things %}
-        <div align="center" class="col-sm-12 col-md-8 col-lg-3">
+        <div style="margin-top:4vh;" align="center" class="col-sm-12 col-md-8 col-lg-3">
     <div align="center" class="item_card">
          <a href="{{url_for('product', id=i.id)}}">
         <img class="img_item" src={{i.img_url}}>
@@ -81,11 +81,13 @@
         <div class="details">
             <p>{{i.Name}}</p>
             <div style="display:flex;">
-            <p>Price: ${{i.Price}}
+            <p style="margin-left:10px;">Price: ${{i.Price}}
                 <br>
             <p style="margin-left:20px;">★{{i.Rating}}</p>
 
-                <a href="{{url_for('add_to_cart', id=i.id)}}"><button style="font-size:12px; height:24px; margin-left:40px;">Add to cart</button></a>
+                <a href="{{url_for('add_to_cart', id=i.id)}}"><button style="font-size:12px; height:24px; margin-left:50px; border-radius:10px; border:0px;
+background:#8AA14E; color:white;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+">Add to cart</button></a>
 
                 </div>
             </div>
@@ -97,7 +99,7 @@
         </div>
     </div>
 
-
+<br><br>
 <div class="container">
   <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
     <div class="col mb-3">
